@@ -4,7 +4,7 @@ export class CardPage extends BasePage {
   constructor(page) {
     super(page);
     this.cardDescription = '[data-cy="card-description"]';
-    this.closeBtn = '[data-cy="close"]'; // or X button selector
+    this.closeBtn = '[data-cy="close"]';
     this.dueDateBtn = 'text="Due date"';
     this.copyAttributesBtn = 'text="Copy attributes"';
     this.deleteCardBtn = 'text="Delete card"';
@@ -14,7 +14,10 @@ export class CardPage extends BasePage {
   }
 
   async addDescription(description) {
-    await this.fillInput(this.cardDescription, description);
+    await this.clickElement(this.cardDescription);
+    await this.page.keyboard.type(description);
+    await this.page.keyboard.press("Enter");
+    await this.waitFor(2000);
   }
 
   async closeCard() {

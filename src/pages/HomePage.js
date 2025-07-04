@@ -11,7 +11,7 @@ export class HomePage extends BasePage {
   }
 
   async navigateToHomePage() {
-    await this.goto("http://localhost:3000/");
+    await this.goto("/");
     await this.waitFor(3000);
   }
 

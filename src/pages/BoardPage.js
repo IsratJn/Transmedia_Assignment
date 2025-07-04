@@ -19,8 +19,8 @@ export class BoardPage extends BasePage {
     this.listNameInput = '[data-cy="list-name"]';
   }
 
-  async verifyBoardCreated(boardId = "2") {
-    await this.expectUrl(new RegExp(`\\/board\\/${boardId}$`));
+  async verifyBoardCreated() {
+    await this.expectUrl(new RegExp(`\\/board\\/\\d+$`));
     await this.expectVisible(this.homeBtn);
   }
 
@@ -64,5 +64,23 @@ export class BoardPage extends BasePage {
     const listInputs = this.page.locator(this.listNameInput);
     await expect(listInputs.nth(0)).toHaveValue(listName1);
     await expect(listInputs.nth(1)).toHaveValue(listName2);
+  }
+
+  async deleteListByName(listName) {
+    await this.page.waitForSelector('[data-cy="list"]');
+    const lists = this.page.locator('[data-cy="list"]');
+    const count = await lists.count();
+
+    for (let i = 0; i < count; i++) {
+      const listNameInput = lists.nth(i).locator('[data-cy="list-name"]');
+      const value = await listNameInput.inputValue();
+
+      if (value === listName) {
+        await lists.nth(i).locator('[data-cy="list-options"]').click();
+        await this.waitFor(1000);
+        await this.clickElement('text="Delete list"');
+        break;
+      }
+    }
   }
 }
