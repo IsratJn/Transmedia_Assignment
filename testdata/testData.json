@@ -1,3 +1,7 @@
 {
-  "boardName": "New Board by Israt"
+  "boardName": "New Board by Israt",
+  "listName_1": "First list",
+  "listName_2": "Second list",
+  "cardName_1": "First card",
+  "cardDescription": "Card created inside list"
 }

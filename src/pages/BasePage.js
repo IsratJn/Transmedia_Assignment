@@ -32,4 +32,8 @@ export class BasePage {
   async expectTitle(pattern) {
     await expect(this.page).toHaveTitle(pattern);
   }
+
+  async uploadFile(selector, filePath) {
+    await this.page.setInputFiles(selector, filePath);
+  }
 }

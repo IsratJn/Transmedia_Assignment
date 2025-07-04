@@ -28,4 +28,9 @@ export class HomePage extends BasePage {
     await this.clickElement(this.createBoardBtn);
     await this.waitFor(3000);
   }
+
+  async navigateToBoard(boardName) {
+    const boardElement = this.page.getByText(boardName);
+    await boardElement.click();
+  }
 }
