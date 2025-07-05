@@ -1,6 +1,6 @@
 # Playwright Automation Test Suite
 
-Playwright test automation framework for board management application with UI and API testing.
+Playwright test automation framework with UI and API testing.
 
 ## What I Implemented
 
@@ -14,16 +14,19 @@ Playwright test automation framework for board management application with UI an
 ## Project Structure
 
 ```
-├── pages/
-│   ├── BasePage.js          # Base page with common methods
-│   ├── HomePage.js          # Home page operations
-│   ├── BoardPage.js         # Board and list management
-│   └── CardPage.js          # Card operations
-├── tests/
-│   ├── api/
-│   │   └── list-api.spec.js     # API tests
-│   └── ui/
-│       └── board-workflow.spec.js   # UI workflow tests
+├── src/
+│   ├── pages/
+│   │   ├── BasePage.js          # Base page with common methods
+│   │   ├── HomePage.js          # Home page operations
+│   │   ├── BoardPage.js         # Board and list management
+│   │   └── CardPage.js          # Card operations
+│   └── tests/
+│       ├── api/
+│       │   └── list-api.spec.js     # API tests
+│       └── ui/
+│           └── board-workflow.spec.js   # UI workflow tests
+├── postman/
+│   └── Transmedia.postman_collection.json  # Postman API collection
 ├── testdata/
 │   ├── testData.json           # Test data
 │   └── pexels-brett-sayles-1322185.jpg  # Sample image
@@ -72,7 +75,7 @@ npx playwright test --headed
 
 ### API Tests
 
-1. **POST**: Create new list via API using existing board (boardId: 1)
-2. **DELETE**: Remove all lists via API endpoint
+1. **Playwright API**: Create and delete lists via Playwright request library
+2. **Postman Collection**: Alternative API automation with pre/post test assertions
 
 **API Test Approach**: Used pre-existing board from database instead of creating new one, as the assessment focuses on list operations. The DELETE endpoint clears all lists from database, which matches the server implementation that sets `lists: []` and `cards: []`.
