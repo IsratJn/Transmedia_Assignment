@@ -5,7 +5,7 @@ const API_BASE_URL = "http://localhost:3000/api/lists";
 test.describe.serial("List API Tests", () => {
   test("POST - Create a new list", async ({ request }) => {
     const listData = {
-      boardId: "2",
+      boardId: "1",
       name: "List created via API",
       description: "API Test List Description",
     };
