@@ -1,6 +1,6 @@
 # Playwright Automation Test Suite
 
-Playwright test automation framework with UI and API testing.
+Playwright test automation framework for board management application with UI and API testing.
 
 ## What I Implemented
 
@@ -34,7 +34,7 @@ Playwright test automation framework with UI and API testing.
 
 ## Configuration
 
-Base URL: http://localhost:3000 (update in `playwright.config.js`, `HomePage.js` and `list-api.spec.js` for different ports)
+- **Base URL**: `http://localhost:3000` (update in `playwright.config.js`, `HomePage.js` and `list-api.spec.js` for different ports)
 
 ## Setup and Installation
 
@@ -61,3 +61,18 @@ npx playwright test list-api.spec.js
 # Run with headed browser
 npx playwright test --headed
 ```
+
+## Test Coverage
+
+### UI Workflow Tests
+
+1. **TC 001**: Create board and verify navigation
+2. **TC 002**: Add two lists, create card with description and image
+3. **TC 003**: Delete a list and verify removal
+
+### API Tests
+
+1. **POST**: Create new list via API using existing board (boardId: 1)
+2. **DELETE**: Remove all lists via API endpoint
+
+**API Test Approach**: Used pre-existing board from database instead of creating new one, as the assessment focuses on list operations. The DELETE endpoint clears all lists from database, which matches the server implementation that sets `lists: []` and `cards: []`.
